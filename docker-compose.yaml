@@ -1,0 +1,22 @@
+services:
+  datascience-notebook:
+    image: quay.io/jupyter/base-notebook
+    container_name: jupyterlab
+    hostname: jupyterlab
+    restart: always
+    volumes:
+      - jupyter-data:/home/jovyan
+    ports:
+      - "8888:8888"
+    environment:
+      JUPYTER_ALLOW_INSECURE_WRITES: true
+      JUPYTER_TOKEN: mytoken
+    networks:
+      mlops_demo_network:
+    command:
+      start-notebook.py
+networks:
+  mlops_demo_network:
+    name: mlops_demo_network
+volumes:
+  jupyter-data:
