@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pyweb
+  name: pyweb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pyweb
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: pyweb
+    spec:
+      containers:
+      - image: quay.io/uvelyster/pyweb
+        name: pyweb
+        resources: {}
+status: {}

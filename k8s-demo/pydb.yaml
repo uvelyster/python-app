@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pydb
+  name: pydb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pydb
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: pydb
+    spec:
+      containers:
+      - image: quay.io/uvelyster/mysql:5.7
+        name: mysql
+        resources: {}
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "Test123!"
+status: {}

@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pywebserver
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: pyweb.mysvc.dom
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pyweb
+            port:
+              number: 5000
