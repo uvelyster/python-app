@@ -1,5 +1,5 @@
 FROM python:alpine
 RUN pip install flask pymysql 
-COPY app.py /
+WORKDIR /app
+COPY app.py .
 CMD python app.py 
-

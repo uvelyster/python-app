@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sc-pod
+spec:
+  volumes:
+  - name: vol
+    persistentVolumeClaim:
+      claimName: host-sc
+  containers:
+  - name: nginx
+    image: quay.io/uvelyster/nginx
+    volumeMounts:
+    - mountPath: "/usr/share/nginx/html"
+      name: vol
+  nodeSelector:
+    kubernetes.io/hostname: node01
